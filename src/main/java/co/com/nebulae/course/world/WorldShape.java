@@ -5,17 +5,20 @@
  */
 package co.com.nebulae.course.world;
 
-import javafx.scene.input.KeyCode;
+import javafx.event.Event;
+import javafx.scene.input.KeyEvent;
 
 /**
  *
  * @author Andres Sanchez - nebulae.com.co
  */
 public interface WorldShape {
-   
-    public void redraw(Long time);
-    
-    public void handleInput(E k);
-    
-    
+
+    public void redraw(Long time); 
+
+    public void handleInput(KeyEvent event);
+
+    public void isVisible();
+
+    public void collision();
 }

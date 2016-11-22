@@ -8,7 +8,7 @@ package co.com.nebulae.course.world.labs;
 import co.com.nebulae.course.entity.Xform;
 import co.com.nebulae.course.world.Log;
 import co.com.nebulae.course.world.WorldShape;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
@@ -135,13 +135,23 @@ public class Parabolic3DBall implements WorldShape{
     }
     
     @Override
-    public void handleInput(KeyCode k) {
+    public void redraw(Long time) {
+        move(time);
+    }
+
+    @Override
+    public void handleInput(KeyEvent event) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void redraw(Long time) {
-        move(time);
+    public void isVisible() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void collision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

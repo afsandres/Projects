@@ -8,7 +8,7 @@ package co.com.nebulae.course.world.labs;
 import co.com.nebulae.course.entity.Xform;
 import co.com.nebulae.course.world.Log;
 import co.com.nebulae.course.world.WorldShape;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
@@ -29,9 +29,9 @@ public class LaunchableBall implements WorldShape {
     private Double speedX = 0d;
     private Double speedY = 0d;
     private Double speedZ = 0d;
-    private Double angleX = 60d;
-    private Double angleY = 20d;
-    private Double angleZ = 70d;
+    private Double angleX = 0d;
+    private Double angleY = 0d;
+    private Double angleZ = 0d;
     private Double friction = 0.7d;
     private boolean go = false;
     private boolean floor = false;
@@ -74,9 +74,7 @@ public class LaunchableBall implements WorldShape {
         cylinder.setMaterial(greyMaterial);
         directionXform.getChildren().add(cylinder);
 
-        elementsGroup.getChildren().add(ballXform);
         elementsGroup.getChildren().add(directionXform);
-
         world.getChildren().addAll(elementsGroup);
 
     }
@@ -145,15 +143,58 @@ public class LaunchableBall implements WorldShape {
     }
 
     @Override
-    public void handleInput(KeyCode k) {
-
-        
-      
+    public void redraw(Long time) {
+        move(time);
     }
 
     @Override
-    public void redraw(Long time) {
-        move(time);
+    public void handleInput(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP:
+                angleX += 1d;
+                directionXform.rx.setAngle(angleX);
+                System.out.println("UP " + directionXform.rx.getAngle());
+                break;
+            case DOWN:
+                angleX -= 1d;
+                directionXform.rx.setAngle(angleX);
+                System.out.println("DOWN " + directionXform.rx.getAngle());
+                break;
+            case RIGHT:
+                angleY += 1d;
+                directionXform.ry.setAngle(angleY);
+                System.out.println("RIGHT " + directionXform.ry.getAngle());
+                break;
+            case LEFT:
+                 angleY -= 1d;
+                directionXform.ry.setAngle(angleY);
+                System.out.println("LEFT" + directionXform.ry.getAngle());
+                break;
+            case ENTER:
+                System.out.println("ENTER");
+                if (event.getEventType() == event.KEY_PRESSED) {
+
+                }
+
+                if (event.getEventType() == event.KEY_RELEASED) {
+                    elementsGroup.getChildren().add(ballXform);
+                    go();
+                }
+
+            default:
+                break;
+        }
+
+    }
+
+    @Override
+    public void isVisible() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void collision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

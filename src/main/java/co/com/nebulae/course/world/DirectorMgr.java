@@ -5,6 +5,7 @@
  */
 package co.com.nebulae.course.world;
 
+import co.com.nebulae.course.world.labs.LaunchableBall;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.Event;
@@ -50,10 +51,24 @@ public class DirectorMgr {
         });
     }
 
-    public void handleEvents(Event  event) {
-        partialDynamicObjects.stream().forEach((worldShape) -> {
-            worldShape.handleInput(event);
-        });
+    public void inputEventListener(KeyEvent event) {
+        
+        switch (event.getCode()) {
+
+            case SPACE:
+                
+                if (event.getEventType() == event.KEY_PRESSED) {
+                    LaunchableBall launchableBall = new LaunchableBall();
+                    launchableBall.buildElements(SceneMgr.getInstance().getWorld());
+                    partialDynamicObjects.add(launchableBall);
+                    break;
+                }
+        
+            default:
+                partialDynamicObjects.get(partialDynamicObjects.size() - 1).handleInput(event);
+                break;
+
+        }
     }
 
 }
