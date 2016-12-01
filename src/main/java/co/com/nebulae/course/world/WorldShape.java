@@ -17,6 +17,8 @@ public interface WorldShape {
     public void redraw(Long time); 
 
     public void handleInput(KeyEvent event);
+     
+    public void handleControlInput(Event event);
 
     public void isVisible();
 
