@@ -6,17 +6,13 @@
 package co.com.nebulae.course.world.labs;
 
 import co.com.nebulae.course.entity.Xform;
-import co.com.nebulae.course.world.Log;
 import co.com.nebulae.course.world.WorldShape;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.Sphere;
 
 /**
  *
