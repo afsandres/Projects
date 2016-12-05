@@ -52,23 +52,6 @@ public class DirectorMgr {
     }
 
     public void inputEventListener(KeyEvent event) {
-        
-        switch (event.getCode()) {
-
-            case SPACE:
-                
-                if (event.getEventType() == event.KEY_PRESSED) {
-                    LaunchableBall launchableBall = new LaunchableBall();
-                    launchableBall.buildElements(SceneMgr.getInstance().getWorld());
-                    partialDynamicObjects.add(launchableBall);
-                    break;
-                }
-        
-            default:
-                partialDynamicObjects.get(partialDynamicObjects.size() - 1).handleInput(event);
-                break;
-
-        }
+        partialDynamicObjects.get(partialDynamicObjects.size() - 1).handleInput(event);
     }
-
 }
