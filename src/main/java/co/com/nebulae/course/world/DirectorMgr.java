@@ -5,11 +5,9 @@
  */
 package co.com.nebulae.course.world;
 
-import co.com.nebulae.course.world.labs.LaunchableBall;
+import co.com.nebulae.course.world.labs.Tank;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.event.Event;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -20,6 +18,9 @@ public class DirectorMgr {
 
     //<editor-fold defaultstate="collapsed" desc="SINGLETON">
     private DirectorMgr() {
+        Tank tank = new Tank();
+        tank.buildElements(SceneMgr.getInstance().getWorld());
+        dynamicObjects.add(tank);
     }
 
     public static DirectorMgr getInstance() {

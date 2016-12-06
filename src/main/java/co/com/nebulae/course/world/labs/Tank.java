@@ -41,9 +41,9 @@ public class Tank implements WorldShape {
         oliveGreenMaterial.setSpecularColor(Color.OLIVE);
 
         tankXform = new Xform();
-        skeleton = new Box(100d, 50d, 50d);
-        skeleton.setTranslateX(50d);
-        skeleton.setTranslateY(0d);
+        skeleton = new Box(150d, 50d, 300d);
+        skeleton.setTranslateX(100d);
+        skeleton.setTranslateY(19d);
         skeleton.setTranslateZ(360d);
         skeleton.setMaterial(greenMaterial);
         tankXform.getChildren().add(skeleton);
@@ -53,6 +53,7 @@ public class Tank implements WorldShape {
         canonCylinder.setTranslateX(50d);
         canonCylinder.setTranslateY(5d);
         canonCylinder.setTranslateZ(360d);
+        canonCylinder.setMaterial(oliveGreenMaterial);
         canonXform.getChildren().add(canonCylinder);
 
         elementsGroup.getChildren().add(tankXform);
