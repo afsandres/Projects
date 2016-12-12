@@ -50,9 +50,26 @@ public class DirectorMgr {
         partialDynamicObjects.stream().forEach((worldShape) -> {
             worldShape.redraw(time);
         });
+
+        dynamicObjects.stream().forEach((worldShape) -> {
+            worldShape.redraw(time);
+        });
+
+        staticObjects.stream().forEach((worldShape) -> {
+            worldShape.redraw(time);
+        });
     }
 
     public void inputEventListener(KeyEvent event) {
-        partialDynamicObjects.get(partialDynamicObjects.size() - 1).handleInput(event);
+        if (!partialDynamicObjects.isEmpty()) {
+            partialDynamicObjects.get(partialDynamicObjects.size() - 1).handleInput(event);
+        }
+        if (!dynamicObjects.isEmpty()) {
+            dynamicObjects.get(dynamicObjects.size() - 1).handleInput(event);
+        }
+
+        if (!staticObjects.isEmpty()) {
+            staticObjects.get(staticObjects.size() - 1).handleInput(event);
+        }
     }
 }
